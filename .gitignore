@@ -2,3 +2,5 @@ wp/wp-config-sample.php
 wp/wp-config.php
 wp/wp-config-dev.php
 wp/wp-config-prod.php
+wp/wp-content/themes/interstellar/.sass-cache/
+wp/wp-content/themes/interstellar/assets/bower_components/
