@@ -3,59 +3,60 @@
     var $rocket, animateRocket;
     $rocket = $('.rocket');
     animateRocket = function() {
-      return $rocket.velocity({
+      return $rocket.fadeIn(1000).velocity({
+        rotateZ: "+=45deg",
+        left: "+=750",
+        top: "-=300"
+      }, {
+        easing: "linear",
+        duration: 5000
+      }).velocity({
+        rotateZ: "-=45deg",
+        left: "+=400",
+        top: "-=100"
+      }, {
+        easing: "linear",
+        duration: 3000
+      }).velocity({
+        rotateZ: "-=45deg",
+        top: "-=100",
+        left: "+=100"
+      }, {
+        easing: "linear",
+        duration: 2000
+      }).velocity({
+        left: "-=850",
+        top: "-=100"
+      }, {
+        easing: "linear",
+        duration: 5000
+      }).velocity({
+        rotateZ: "+=45deg",
+        top: "-=100",
+        left: "-=200"
+      }, {
+        easing: "linear",
+        duration: 3000
+      }).velocity({
+        rotateZ: "-=45deg",
         top: "-=400"
       }, {
         easing: "linear",
-        delay: 500,
-        duration: 2000
-      }).velocity({
-        rotateZ: "+=90"
-      }, {
-        easing: "linear",
-        delay: 500,
-        duration: 500
-      }).velocity({
-        left: "+=1150"
-      }, {
-        delay: 500,
-        duration: 4000
-      }).velocity({
-        rotateZ: "+=90"
-      }, {
-        easing: "linear",
-        delay: 500,
-        duration: 500
-      }).velocity({
-        top: "+=400"
-      }, {
-        delay: 500,
-        duration: 2000
-      }).velocity({
-        rotateZ: "+=90"
-      }, {
-        easing: "linear",
-        delay: 500,
-        duration: 500
-      }).velocity({
-        left: "-=1150"
-      }, {
-        delay: 500,
-        duration: 4000
-      }).velocity({
-        rotateZ: "+=90"
-      }, {
-        easing: "linear",
-        delay: 500,
-        duration: 500,
-        complete: (function(_this) {
-          return function() {
+        duration: 1000,
+        complete: function() {
+          $rocket.attr('style', '');
+          $rocket.velocity({
+            rotateZ: "+=45deg"
+          });
+          return setTimeout(function() {
             return animateRocket();
-          };
-        })(this)
+          }, 15000);
+        }
       });
     };
-    return animateRocket();
+    return setTimeout(function() {
+      return animateRocket();
+    }, 2000);
   });
 
 }).call(this);

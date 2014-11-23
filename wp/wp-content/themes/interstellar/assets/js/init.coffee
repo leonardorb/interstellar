@@ -4,36 +4,32 @@ $(document).ready ->
 
   animateRocket = ->
     $rocket
-    .velocity top: "-=400",
+    .fadeIn 1000
+    .velocity rotateZ: "+=45deg", left: "+=750", top: "-=300",
       easing: "linear"
-      delay: 500
+      duration: 5000
+    .velocity rotateZ: "-=45deg", left: "+=400", top: "-=100",
+      easing: "linear"
+      duration: 3000
+    .velocity rotateZ: "-=45deg", top: "-=100", left: "+=100",
+      easing: "linear"
       duration: 2000
-    .velocity rotateZ: "+=90",
+    .velocity left: "-=850", top: "-=100",
       easing: "linear"
-      delay: 500
-      duration: 500
-    .velocity left: "+=1150",
-      delay: 500
-      duration: 4000
-    .velocity rotateZ: "+=90",
+      duration: 5000
+    .velocity rotateZ: "+=45deg", top: "-=100", left: "-=200",
       easing: "linear"
-      delay: 500
-      duration: 500
-    .velocity top: "+=400",
-      delay: 500
-      duration: 2000
-    .velocity rotateZ: "+=90",
+      duration: 3000
+    .velocity rotateZ: "-=45deg", top: "-=400",
       easing: "linear"
-      delay: 500
-      duration: 500
-    .velocity left: "-=1150",
-      delay: 500
-      duration: 4000
-    .velocity rotateZ: "+=90",
-      easing: "linear"
-      delay: 500
-      duration: 500
-      complete: =>
-        animateRocket()
+      duration: 1000
+      complete: ->
+        $rocket.attr 'style', ''
+        $rocket.velocity rotateZ: "+=45deg"
+        setTimeout ->
+          animateRocket()
+        , 15000
 
-  animateRocket()
+  setTimeout ->
+    animateRocket()
+  , 2000
