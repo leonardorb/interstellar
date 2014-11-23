@@ -1,0 +1,104 @@
+/*!
+
+  Theme Name: interstellar
+  Theme URI: http://www.leonardo.io
+  Description: Version 1.0 of leonardo.io
+  Version: 1.0
+  Author: Leo
+  Author URI: https://github.com/leonardorb
+  Tags: leonardo, leo
+
+  */
+
+@import "compass"
+// n is number of stars required
+@function multiple-box-shadow ($n) 
+  $value: '#{random(2000)}px #{random(2000)}px #FFF'
+  @for $i from 2 through $n
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF'
+
+  @return unquote($value)
+
+$shadows-small:  multiple-box-shadow(900)
+$shadows-medium: multiple-box-shadow(200)
+$shadows-big:    multiple-box-shadow(100)
+
+html
+  height: 100%
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)
+  overflow: hidden
+
+body
+  width: 0px
+  padding: 0px
+  background: #0C112B
+    
+.rocket
+  position: absolute
+  top: 500px
+  left: 100px
+  height: 70px
+  width: 70px
+
+#stars
+  width: 1px
+  height: 1px
+  background: transparent
+  box-shadow: $shadows-small
+  z-index: 200
+  +animation(animStar 50s linear infinite)
+    
+  &:after
+    content: " "
+    position: absolute
+    top: 2000px
+    width: 1px
+    height: 1px
+    background: transparent
+    box-shadow: $shadows-small
+    
+#stars2
+  width: 2px
+  height: 2px
+  background: transparent
+  box-shadow: $shadows-medium
+  z-index: 200
+  +animation(animStar 100s linear infinite)
+    
+  &:after
+    content: " "
+    position: absolute
+    top: 2000px
+    width: 2px
+    height: 2px
+    background: transparent
+    box-shadow: $shadows-medium
+    
+#stars3
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  border-radius: 5px
+  width: 3px
+  height: 3px
+  background: transparent
+  box-shadow: $shadows-big
+  z-index: 200
+  +animation(animStar 150s linear infinite)
+    
+  &:after
+    -webkit-border-radius: 5px
+    -moz-border-radius: 5px
+    border-radius: 5px
+    content: " "
+    position: absolute
+    top: 2000px
+    width: 3px
+    height: 3px
+    background: transparent
+    box-shadow: $shadows-big
+    
++keyframes(animStar)
+  from  
+    transform: translateY(-2000px)
+  to    
+    transform: translateY(0px)
